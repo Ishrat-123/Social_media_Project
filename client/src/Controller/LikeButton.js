@@ -6,7 +6,7 @@ import { Button, Label, Icon } from 'semantic-ui-react';
 
 import MyPopup from '../util/MyPopup';
 
-function LikeButton({ user, post: { id, likeCount, likes } }) {
+export function LikeButton({ user, post: { id, likeCount, likes } }) {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function LikeButton({ user, post: { id, likeCount, likes } }) {
 
   const likeButton = user ? (
     liked ? (
-      <Button color="blue">
+      <Button color="blue" data-testid= "likebtn">
         <Icon name="heart" />
       </Button>
     ) : (
@@ -38,7 +38,7 @@ function LikeButton({ user, post: { id, likeCount, likes } }) {
   return (
     <Button as="div" labelPosition="right" onClick={likePost}>
       <MyPopup content={liked ? 'Unlike' : 'Like'}>{likeButton}</MyPopup>
-      <Label basic color="blue" pointing="left">
+      <Label basic color="blue" pointing="left" data-testid="likeCount">
         {likeCount}
       </Label>
     </Button>
